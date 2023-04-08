@@ -60,6 +60,7 @@ namespace VacationManager_Martin.Data
         public  virtual DbSet<PaidTimeOff> PaidTimeOffs { get; set; }
         public virtual DbSet<UnpaidTimeOff> UnpaidTimeOffs { get; set; }
         public virtual DbSet<SickTimeOff> SickTimeOffs { get; set;}
+        public DbSet<VacationManager_Martin.Data.Entities.TimeOffs.BaseTimeOff> BaseTimeOff { get; set; } = default!;
        // public DbSet<VacationManager_Martin.Models.UserViewModel> UserViewModel { get; set; } = default!;
     }
 }
