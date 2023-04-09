@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VacationManager_Martin.Data;
-using VacationManager_Martin.Data.DataSeeder;
+//using VacationManager_Martin.Data.DataSeeder;
 using VacationManager_Martin.Data.Entities;
 using VacationManager_Martin.Global;
 

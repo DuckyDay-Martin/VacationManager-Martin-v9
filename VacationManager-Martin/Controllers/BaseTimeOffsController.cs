@@ -61,14 +61,18 @@ namespace VacationManager_Martin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,From,To,CreatedOn,IsHalfDay,IsApproved,RequestorId")] BaseTimeOff baseTimeOff)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _context.Add(baseTimeOff);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RequestorId"] = new SelectList(_context.Users, "Id", "Id", baseTimeOff.RequestorId);
-            return View(baseTimeOff);
+            catch
+            {
+                ViewData["RequestorId"] = new SelectList(_context.Users, "Id", "Id", baseTimeOff.RequestorId);
+                return View(baseTimeOff);
+            }
+
         }
 
         // GET: BaseTimeOffs/Edit/5

@@ -6,7 +6,7 @@ namespace VacationManager_Martin.Models
     {
         public UserViewModel()
         {
-            Id= new Guid().ToString();
+            Id = new Guid().ToString();
         }
 
 

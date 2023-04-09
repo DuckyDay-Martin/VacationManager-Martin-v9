@@ -49,6 +49,7 @@ namespace VacationManager_Martin.Controllers
         }
 
         // GET: Teams/Create
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
@@ -58,18 +59,24 @@ namespace VacationManager_Martin.Controllers
 
         // POST: Teams/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Team team)
         {
-            if (ModelState.IsValid)
+
+            try
             {
                 _context.Add(team);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            catch
+            {
             ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id", team.ProjectId);
             ViewData["TeamLeadId"] = new SelectList(_context.Users, "Id", "Id", team.TeamLeadId);
             return View(team);
+                
+            }
+
         }
 
         // GET: Teams/Edit/5

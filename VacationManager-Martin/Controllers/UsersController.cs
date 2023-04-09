@@ -63,7 +63,6 @@ namespace VacationManager_Martin.Controllers
 
 
             return View(userViewModels);
-            //Problem("Entity set 'ApplicationDbContext.UserViewModel'  is null.");
         }
 
         // GET: Users/Details/5
@@ -98,7 +97,7 @@ namespace VacationManager_Martin.Controllers
         // POST: Users/Create      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( UserViewModel userViewModel) //[Bind("Id,Password,FirstName,LastName,UserName,TeamId")]
+        public async Task<IActionResult> Create( UserViewModel userViewModel) 
         {
             if (ModelState.IsValid)
             {
@@ -106,8 +105,7 @@ namespace VacationManager_Martin.Controllers
                 var user = new User();
                 user.FirstName = userViewModel.FirstName;
                 user.LastName = userViewModel.LastName;
-                user.UserName = userViewModel.UserName;
-                //user.Password= userViewModel.Password;
+                user.UserName = userViewModel.UserName;             
                 user.TeamId= userViewModel.TeamId;
 
                 await _userManager.CreateAsync(user, userViewModel.Password);
@@ -167,15 +165,7 @@ namespace VacationManager_Martin.Controllers
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
-                {
-                    //if (!UserViewModelExists(userViewModel.Id))
-                    //{
-                    //    return NotFound();
-                    //}
-                    //else
-                    //{
-                    //    throw;
-                    //}
+                {                  
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -190,7 +180,7 @@ namespace VacationManager_Martin.Controllers
                 return NotFound();
             }
 
-            var user = new User();     
+            var user = new User();
             var userViewModel = new UserViewModel
             {
                 Id = user.Id,
@@ -222,11 +212,6 @@ namespace VacationManager_Martin.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        //private bool UserViewModelExists(string id)
-        //{
-        //  return (_context.UserViewModel?.Any(e => e.Id == id)).GetValueOrDefault();
-        //}
+        }       
     }
 }

@@ -9,11 +9,11 @@ namespace VacationManager_Martin.Data.Entities
             Developers = new HashSet<User>();
         }
 
-        [Required]
+        //[Required]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(20, ErrorMessage = "Team name lenght can't be more than 20 letters")]
+        [StringLength(20)]
         public string Name { get; set; }
 
         [Required]
