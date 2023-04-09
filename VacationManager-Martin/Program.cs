@@ -113,7 +113,7 @@ using (var scope = app.Services.CreateScope())
         await userManager.CreateAsync(user, password);
         await userManager.AddPasswordAsync(user, password);
 
-        await userManager.AddToRoleAsync(user, RoleConstants.Roles.CEO);
+        await userManager.AddToRoleAsync(user, "CEO");
     }
 
 }

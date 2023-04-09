@@ -17,6 +17,7 @@ using VacationManager_Martin.Models;
 namespace VacationManager_Martin.Controllers
 {
     //[Authorize(Roles = Global.RoleConstants.Roles.CEO)]
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -88,7 +89,7 @@ namespace VacationManager_Martin.Controllers
         }
 
         //GET: Users/Create
-        [Authorize(Roles = Global.RoleConstants.Roles.CEO)]
+        //[Authorize(Roles = Global.RoleConstants.Roles.CEO)]
         public IActionResult Create()
         {
             return View();
