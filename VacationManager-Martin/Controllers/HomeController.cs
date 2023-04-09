@@ -6,7 +6,7 @@ using VacationManager_Martin.Models;
 namespace VacationManager_Martin.Controllers
 {
     //[Authorize(Roles = Global.RoleConstants.Roles.CEO)]
-    [Authorize(Roles = "CEO")]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
